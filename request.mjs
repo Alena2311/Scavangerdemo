@@ -1,5 +1,5 @@
-async function makeRequest(url,method="GET", token="") {
-    let data {};
+async function makeRequest(url,method="GET", token="", payLoad = null) {
+    let data = {};
     const headers = {
         method:method,
         headers: {
@@ -8,14 +8,16 @@ async function makeRequest(url,method="GET", token="") {
         }
     }
 
-    if (payLoad) 
+    if (payLoad) { headers.body = JSON.stringify(payLoad); }
 
     try {
-    const respons = await fetch(startURL);
-    let data = await respons.json();
+    const respons = await fetch(url, headers);
+    data = await respons.json();
     console.log(data);
-} catch (err) {
+    } catch (err) {
     console.log(err);
-}
+    }
 
+    return data;
 }
+export default makeRequest;

@@ -1,8 +1,10 @@
 import makeRequest from "./request.mjs";
+import fs from "node:fs"
 
 const player = "alenarepina96@gmail.com"
 const baseURL = "https://spacescavanger.onrender.com";
 const startURL = `${baseURL}/start?player=${player}`;
+const answerURL = `${baseURL}/answer`;
 
 const token = process.env.API_KEY;
 const spaceBaseURL = "https://api.le-systeme-solaire.net/rest"
